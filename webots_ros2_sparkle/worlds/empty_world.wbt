@@ -1,0 +1,41 @@
+#VRML_SIM R2023a utf8
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "/home/hamed/simulation_ws/src/webots_ros2_sparkle/protos/sparkle.proto"
+
+WorldInfo {
+  info [
+    "Empty World"
+  ]
+  title "Sparkle Empty"
+}
+Viewpoint {
+  orientation 0.10441349581936693 -0.969606685129755 -0.2212706443305736 5.382793309990334
+  position -2.311676018819576 -0.5712390632896344 2.8727220457336857
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  appearance Parquetry {
+    type "chequered"
+    textureTransform TextureTransform {
+      scale 0.25 0.25
+    }
+  }
+}
+sparkle {
+  translation 0 0 0
+  rotation 0 1 0 0
+  name "sparkle"
+  supervisor FALSE
+  synchronization TRUE
+  customData ""
+  controller "<extern>"
+  controllerArgs [
+    ""
+  ]
+}

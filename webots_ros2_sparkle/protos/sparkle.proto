@@ -1,0 +1,278 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/devices/tdk/protos/Mpu-9250.proto"
+
+PROTO sparkle [
+  field SFVec3f    translation     0 0 0                 # Is `Transform.translation`.
+  field SFRotation rotation        0 1 0 0               # Is `Transform.rotation`.
+  field SFString   name            "sparkle"	         # Is `Solid.name`.
+  field SFString   controller      "<extern>"            # Is `Robot.controller`.
+  field MFString   controllerArgs  []                    # Is `Robot.controllerArgs`.
+  field SFString   customData      ""                    # Is `Robot.customData`.
+  field SFBool     supervisor      FALSE                 # Is `Robot.supervisor`.
+  field SFBool     synchronization TRUE                  # Is `Robot.synchronization`.
+]
+{
+    Robot {
+        translation IS translation
+        rotation IS rotation
+        name IS name
+        controller IS controller
+        controllerArgs IS controllerArgs
+        customData IS customData
+        supervisor IS supervisor
+        synchronization IS synchronization
+
+        children [
+            DEF LIDAR Solid {
+                translation 0 0 0.2768
+                children [
+                    CadShape {
+                        url [
+                            "./meshes/rplidar.dae"
+                        ]
+                    }
+                    Lidar {
+                        translation 0 0 0.042
+                        name "laser_sensor_link"
+                        model "rplidar_a1"
+                        horizontalResolution 360
+                        fieldOfView 6.28319
+                        numberOfLayers 1
+                        near 0.1
+                        minRange 0.15
+                        maxRange 12
+                        noise 0.0043
+                        defaultFrequency 5.5
+                    }
+                ]
+                name "lidar_link"
+            }
+            DEF OAK-D Solid {
+            translation 0.0775 0 0.2316
+            children [
+                Camera {
+                    name "oak_rgb"
+                    fieldOfView 1.20428
+                    width 1280
+                    height 720
+                    noise 0.02
+                }
+                RangeFinder {
+                    translation 0 0 0
+                    name "oak_depth"
+                    fieldOfView 1.396263402
+                    width 640
+                    height 400
+                    minRange 0.6
+                    maxRange 12
+                    noise 0.05
+                }
+                CadShape {
+                    url [
+                        "./meshes/oak.dae"
+                    ]
+                }
+            ]
+            name "camera_link"
+            }
+            Mpu-9250 {
+                translation 0.000000 0.000000 0.19925
+                rotation 0.000000 0.000000 1.000000 0.000000
+                name "imu"
+                includeInertialUnit TRUE
+            }
+            DEF RIGHT_JOINT HingeJoint {
+                jointParameters HingeJointParameters {
+                    axis 0 1 0
+                    anchor 0 -0.105 0.05
+                    dampingConstant 1
+                    staticFriction 1
+                }
+                device [
+                    RotationalMotor {
+                        name "right_motor"
+                        maxVelocity 9
+                    }
+                    PositionSensor {
+                        name "right_sensor"
+                        resolution 0.000747998
+                    }
+                ]
+                endPoint Solid {
+                    translation 0 -0.105 0.05
+                    children [
+                        Transform {
+                            children [
+                                CadShape {
+                                    url [
+                                        "./meshes/wheel_model.dae"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                    name "wheel_right_link"
+                    boundingObject Pose {
+                        rotation 1 0 0 1.5708
+                        children [
+                            Cylinder {
+                                height 0.024
+                                radius 0.05
+                                subdivision 120
+                            }
+                        ]
+                    }
+                    physics DEF right_wheel_physics Physics {
+                        density -1
+                        mass 0.13
+                        centerOfMass [
+                            0 0 0
+                        ]
+                        inertiaMatrix [
+                            0.001 0.001 0.001
+                            0 0 0
+                        ]
+                    }
+                    linearVelocity 0 0 0
+                    angularVelocity 0 0 0
+                }
+            }
+            DEF LEFT_JOINT HingeJoint {
+                jointParameters HingeJointParameters {
+                    axis 0 1 0
+                    anchor 0 0.105 0.05
+                    dampingConstant 1
+                    staticFriction 1
+                }
+                device [
+                    PositionSensor {
+                        name "left_sensor"
+                        resolution 0.000747998
+                    }
+                    RotationalMotor {
+                        name "left_motor"
+                        maxVelocity 9
+                    }
+                ]
+                endPoint Solid {
+                    translation 0 0.105 0.05
+                    children [
+                        Transform {
+                            children [
+                                CadShape {
+                                    url [
+                                        "./meshes/wheel_model.dae"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                    name "wheel_left_link"
+                    boundingObject Pose {
+                        rotation 1 0 0 1.5708
+                        children [
+                            Cylinder {
+                                height 0.024
+                                radius 0.05
+                                subdivision 120
+                            }
+                        ]
+                    }
+                    physics DEF left_wheel_physics Physics {
+                        density -1
+                        mass 0.13
+                        centerOfMass [
+                            0 0 0
+                        ]
+                        inertiaMatrix [
+                            0.001 0.001 0.001
+                            0 0 0
+                        ]
+                    }
+                    linearVelocity 0 0 0
+                    angularVelocity 0 0 0
+                }
+            }
+            DEF CASTER Solid {
+                translation -0.13225 0 0.0335
+                children [
+                    Transform {
+                        children [
+                            CadShape {
+                                url [
+                                    "./meshes/caster_model.dae"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+                boundingObject Group {
+                    children [
+                        DEF sphere Pose {
+                            translation 0 0 -0.01675
+                            children [
+                                Sphere {
+                                    radius 0.0175
+                                    subdivision 3
+                                }
+                            ]
+                        }
+                        DEF cylinder Pose {
+                            translation 0 0 -0.008375
+                            children [
+                                Cylinder {
+                                    height 0.01675
+                                    radius 0.018
+                                }
+                            ]
+                        }
+                    ]
+                }
+                physics DEF back_caster_physics Physics {
+                    density -1
+                    mass 0.03
+                    centerOfMass [
+                        0 0 0
+                    ]
+                    inertiaMatrix [
+                        0.001 0.001 0.001
+                        0 0 0
+                    ]
+                    damping DEF back_caster_damping Damping {
+                        linear 0
+                        angular 0
+                    }
+                }
+            }
+            DEF BODY Transform {
+                translation 0 0 0.0332
+                children [
+                    CadShape {
+                        url [
+                            "./meshes/body_model.dae"
+                        ]
+                    }
+                ]
+            }
+        ]
+        boundingObject Mesh {
+            url [
+            "./meshes/body_mesh.dae"
+            ]
+        }
+        physics Physics {
+            density -1
+            mass 2.4
+            centerOfMass [
+            0 0 0
+            ]
+            inertiaMatrix [
+            0.019995 0.019995 0.03675
+            0 0 0
+            ]
+        }
+        linearVelocity 0 0 0
+        angularVelocity 0 0 0
+    }
+}
