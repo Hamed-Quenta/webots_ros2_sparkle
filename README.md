@@ -5,7 +5,6 @@ Para poder trabajar correctamente con el presente repositorio es necesario confi
 ### Requisitos
 * Sistema operativo Ubuntu 22.04
 * Simulador Webots
-* Conexión inalámbrica a una red local
 
 ### Instalación de ROS 2
 Debes asegurarte de tener instalada la versión adecuada de ROS 2 tanto en la computadora del robot como en una máquina local. Se utilizó ROS 2 Humble LTS para el desarrollo de esta plataforma, dicha versión es compatible con Ubuntu 22.04. Las instrucciones detalladas de instalación se encuentran en la [Documentación de Humble](https://docs.ros.org/en/humble/Installation.html).
