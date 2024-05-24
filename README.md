@@ -56,8 +56,7 @@ Debería ver los siguientes tópicos publicados:
 3. `/odom`: Contienen los datos de odometría de rueda de la simulación.
 4. `/scan`: Contiene las lecturas del sensor LiDAR simulado publicadas a una frecuencia de 5.5Hz.
 5. `/imu`: Contiene las lecturas de aceleración y orientación del sensor IMU simulado.
-6. `/oak/rgb/image`: Contiene imágenes de la cámara RGB de la cámara OAK-D simulada.
-7. `/oak/depth/image`: Contiene imágenes de la cámara de profundidad de la cámara OAK-D simulada.
+6. `/oak/rgb/image`: Contiene imágenes de la cámara RGB simulada.
 8. `/tf`: Contiene las transformaciones de posición y orientación entre todos los links de la simulación.
 9. `robot_description:`: Contiene información de los elementos visuales del robot simulado.
 
@@ -65,7 +64,4 @@ Debería ver los siguientes tópicos publicados:
 
 <img src="https://github.com/Hamed-Quenta/webots_ros2_sparkle/blob/main/images_sim/sim-cam.png" alt="RGB">
 <p style="margin-top:10px; font-size: 16px;"><strong>Figura 2.</strong> Lectura de datos de cámara RGB simulada.</p>
-<br>
-<img src="https://github.com/Hamed-Quenta/webots_ros2_sparkle/blob/main/images_sim/sim-depth.png" alt="Depth">
-<p style="margin-top:10px; font-size: 16px;"><strong>Figura 3.</strong> Lectura de datos de cámara de profundidad simulada.</p>
 <br>
