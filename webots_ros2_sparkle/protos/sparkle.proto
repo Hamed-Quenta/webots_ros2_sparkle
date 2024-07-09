@@ -25,7 +25,7 @@ PROTO sparkle [
 
         children [
             DEF LIDAR Solid {
-                translation 0 0 0.2768
+                translation 0 0 0.1976
                 children [
                     CadShape {
                         url [
@@ -33,7 +33,7 @@ PROTO sparkle [
                         ]
                     }
                     Lidar {
-                        translation 0 0 0.042
+                        translation 0 0 0.0456
                         name "laser_sensor_link"
                         model "rplidar_a1"
                         horizontalResolution 360
@@ -49,35 +49,25 @@ PROTO sparkle [
                 name "lidar_link"
             }
             DEF OAK-D Solid {
-            translation 0.0775 0 0.2316
+            translation 0.08433 0 0.1434
             children [
                 Camera {
                     name "oak_rgb"
-                    fieldOfView 1.20428
-                    width 1280
-                    height 720
-                    noise 0.02
-                }
-                RangeFinder {
-                    translation 0 0 0
-                    name "oak_depth"
-                    fieldOfView 1.396263402
+                    fieldOfView 1.085595
                     width 640
-                    height 400
-                    minRange 0.6
-                    maxRange 12
-                    noise 0.05
+                    height 480
+                    noise 0.02
                 }
                 CadShape {
                     url [
-                        "./meshes/oak.dae"
+                        "./meshes/camera.dae"
                     ]
                 }
             ]
             name "camera_link"
             }
             Mpu-9250 {
-                translation 0.000000 0.000000 0.19925
+                translation 0.000000 0.000000 0.0514
                 rotation 0.000000 0.000000 1.000000 0.000000
                 name "imu"
                 includeInertialUnit TRUE
@@ -85,7 +75,7 @@ PROTO sparkle [
             DEF RIGHT_JOINT HingeJoint {
                 jointParameters HingeJointParameters {
                     axis 0 1 0
-                    anchor 0 -0.105 0.05
+                    anchor 0 -0.1555 0.05
                     dampingConstant 1
                     staticFriction 1
                 }
@@ -100,7 +90,7 @@ PROTO sparkle [
                     }
                 ]
                 endPoint Solid {
-                    translation 0 -0.105 0.05
+                    translation 0 -0.1555 0.05
                     children [
                         Transform {
                             children [
@@ -141,7 +131,7 @@ PROTO sparkle [
             DEF LEFT_JOINT HingeJoint {
                 jointParameters HingeJointParameters {
                     axis 0 1 0
-                    anchor 0 0.105 0.05
+                    anchor 0 0.1555 0.05
                     dampingConstant 1
                     staticFriction 1
                 }
@@ -156,7 +146,7 @@ PROTO sparkle [
                     }
                 ]
                 endPoint Solid {
-                    translation 0 0.105 0.05
+                    translation 0 0.1555 0.05
                     children [
                         Transform {
                             children [
@@ -195,7 +185,7 @@ PROTO sparkle [
                 }
             }
             DEF CASTER Solid {
-                translation -0.13225 0 0.0335
+                translation -0.2 0 0.0335
                 children [
                     Transform {
                         children [
@@ -250,7 +240,7 @@ PROTO sparkle [
                 children [
                     CadShape {
                         url [
-                            "./meshes/body_model.dae"
+                            "./meshes/body.dae"
                         ]
                     }
                 ]
