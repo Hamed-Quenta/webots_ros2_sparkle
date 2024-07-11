@@ -61,7 +61,7 @@ Debería ver los siguientes tópicos publicados:
 9. `robot_description:`: Contiene información de los elementos visuales del robot simulado.
 
 ## Visualización de datos
-
+Para visualizar y monitorear los datos de la simulación es necesario ejecutar la herramienta RViZ y añadir el tópico que se desea visualizar en el espacio de trabajo.
 <img src="https://github.com/Hamed-Quenta/webots_ros2_sparkle/blob/main/images_sim/sim-cam.png" alt="RGB">
 <p style="margin-top:10px; font-size: 16px;"><strong>Figura 2.</strong> Lectura de datos de cámara RGB simulada.</p>
 <br>
